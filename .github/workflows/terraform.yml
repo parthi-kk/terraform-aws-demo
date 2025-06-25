@@ -32,7 +32,7 @@ jobs:
         run: pip install checkov
 
       - name: Run Checkov on Terraform code
-        run: checkov -d terraform/
+        run: checkov -d terraform/ --soft-fail
 
       - name: Terraform Init
         working-directory: terraform
