@@ -75,9 +75,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Debug input
-        run: echo "Confirm input: '${{ github.event.inputs.confirm }}'"
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
