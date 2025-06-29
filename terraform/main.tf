@@ -12,7 +12,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "demo-learn" {
+resource "aws_s3_bucket" "demo-learn1" {
   bucket        = "terra-mirshi-0406"
   force_destroy = true
 }
