@@ -13,6 +13,6 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "demo-learn1" {
-  bucket        = "terra-mirshi-0406"
+  bucket        = "rockstar-mirshi"
   force_destroy = true
 }
