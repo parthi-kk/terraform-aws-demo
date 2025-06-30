@@ -12,7 +12,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "mirshi" {
-  bucket        = "rockstar-mirshi"
+variable "bucket_names" {
+  description = "List of S3 bucket names"
+  type        = list(string)
+  default     = ["rockstar-mirshi", "rockstar-parth"]
+}
+
+resource "aws_s3_bucket" "buckets" {
+  for_each      = toset(var.bucket_names)
+  bucket        = each.value
   force_destroy = true
 }
