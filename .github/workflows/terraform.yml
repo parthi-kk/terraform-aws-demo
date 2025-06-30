@@ -38,16 +38,12 @@ jobs:
         with:
           terraform_version: 1.6.6
 
-      - name: Setup Python for Checkov
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install Checkov
-        run: pip install checkov
-
-      - name: Run Checkov on Terraform code
-        run: checkov -d terraform/ --soft-fail
+      - name: Run Checkov via Docker
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/terraform:/tf \
+            bridgecrew/checkov \
+            -d /tf --soft-fail
 
       - name: Terraform Init
         working-directory: terraform
