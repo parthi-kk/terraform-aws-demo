@@ -4,7 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'terraform/**'
+      - '!terraform/bootstrap/**'
+
   pull_request:
+    paths:
+      - 'terraform/**'
+      - '!terraform/bootstrap/**'
+
   workflow_dispatch:
     inputs:
       confirm:
@@ -43,7 +51,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: terraform
-        run: terraform init
+        run: terraform init -reconfigure
 
       - name: Terraform Format Check
         working-directory: terraform
@@ -82,7 +90,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: terraform
-        run: terraform init
+        run: terraform init -reconfigure
 
       - name: Terraform Destroy (Auto approve)
         working-directory: terraform
