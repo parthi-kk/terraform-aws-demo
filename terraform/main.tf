@@ -15,7 +15,7 @@ provider "aws" {
 variable "bucket_names" {
   description = "List of S3 bucket names"
   type        = list(string)
-  default     = ["rockstar-mirshi", "rockstar-parth"]
+  default     = ["rockstar-mirshi", "rockstar-parthi"]
 }
 
 resource "aws_s3_bucket" "buckets" {
